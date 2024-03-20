@@ -7,5 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
 
+add_subdirectory(utils)
+link_libraries(utils)
 add_subdirectory(src)
 add_subdirectory(tests)
