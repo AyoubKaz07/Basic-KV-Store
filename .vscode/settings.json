@@ -52,6 +52,19 @@
     "stop_token": "cpp",
     "streambuf": "cpp",
     "thread": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "any": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "map": "cpp",
+    "set": "cpp",
+    "unordered_set": "cpp",
+    "optional": "cpp",
+    "fstream": "cpp",
+    "iomanip": "cpp",
+    "shared_mutex": "cpp",
+    "sstream": "cpp",
+    "cinttypes": "cpp",
+    "variant": "cpp"
   }
 }

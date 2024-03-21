@@ -2,11 +2,14 @@
 
 #include <string>
 #include <unordered_map>
+#include <shared_mutex>
+#include <mutex>
 
 class KeyValueStore
 {
 private:
   std::unordered_map<std::string, std::string> store;
+  std::shared_mutex mutex_;
 
 public:
   // Method to set a key-value pair with string value
