@@ -1,7 +1,33 @@
+#include "include/kv_store.h"
 #include <gtest/gtest.h>
 #include <thread>
+#include <vector>
 #include <chrono>
-#include "include/kv_store.h"
+#include <atomic>
+#include <mutex>
+#include <condition_variable>
+#include <iostream>
+
+class CyclicBarrier {
+public:
+    explicit CyclicBarrier(size_t num_threads) : count(num_threads), barrier_threshold(num_threads) {}
+
+    void await() {
+        std::unique_lock<std::mutex> lock(mutex_);
+        if (--count == 0) {
+            count = barrier_threshold;
+            cv_.notify_all();
+        } else {
+            cv_.wait(lock, [this] { return count == barrier_threshold; });
+        }
+    }
+
+private:
+    std::mutex mutex_;
+    std::condition_variable cv_;
+    size_t count;
+    const size_t barrier_threshold;
+};
 
 
 TEST(KeyValueStoreTest, SimpleInsertTest) {
@@ -88,6 +114,56 @@ TEST(KeyValueStoreTest, DISABLED_ConcurrencyTest) {
     thread.join();
   }
 }
+
+/* TEST(KeyValueStoreTest, ConcurrentThreadSafetyTest) {
+    KeyValueStore kv_store;
+
+    // Define the number of threads
+    const int num_threads = 4;
+    const int num_operations_per_thread = 1000;
+
+    // Create a cyclic barrier with the number of threads
+    CyclicBarrier barrier(num_threads);
+
+    // Vector to hold threads
+    std::vector<std::thread> threads;
+
+    // Perform concurrent operations with cyclic barrier synchronization
+    for (int i = 0; i < num_threads; ++i) {
+        threads.emplace_back([&kv_store, &barrier, i, num_operations_per_thread]() {
+            // Wait at the barrier until all threads reach this point
+            barrier.await();
+
+            // Each thread performs its own operations
+            for (int j = 0; j < num_operations_per_thread; ++j) {
+                // Randomly select an operation (set, get, remove)
+                int operation = rand() % 3;
+
+                // Generate a random key
+                std::string key = "key" + std::to_string(rand() % 100);
+
+                // Perform the selected operation
+                switch (operation) {
+                    case 0: // Set operation
+                        kv_store.set(key, "value");
+                        break;
+                    case 1: // Get operation
+                        kv_store.get(key);
+                        break;
+                    case 2: // Remove operation
+                        kv_store.remove(key);
+                        break;
+                }
+            }
+        });
+    }
+
+    // Join all threads
+    for (auto& thread : threads) {
+        thread.join();
+    }
+}*/
+
 
 
 // Entry point for running the tests
