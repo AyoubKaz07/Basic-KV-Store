@@ -20,7 +20,7 @@ The project is divided into several stages, each covering a critical aspect of d
 
 ## Checklist
 
-- [ ] Basic In-Memory Key/Value Store
+- [✅] Basic In-Memory Key/Value Store
 - [ ] Disk-Based Storage Engine for Read-Only Key/Value Data
 - [ ] Log-Structured Merge-Tree for Persistent Reads and Writes
 - [ ] Partitioned Storage Engine for Enhanced Concurrent Performance
