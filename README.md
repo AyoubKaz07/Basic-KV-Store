@@ -1,4 +1,4 @@
-This project aims to get my hands dirtier in doing systems in c++
+This project aims to get my hands dirtier doing systems in c++
 
 ## Description
 
