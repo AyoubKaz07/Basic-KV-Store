@@ -1,4 +1,4 @@
-This project aims to get my hands dirtier in database management systems development in C++.
+This project aims to get my hands dirtier in doing systems in c++
 
 ## Description
 
