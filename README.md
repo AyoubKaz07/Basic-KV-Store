@@ -6,7 +6,7 @@ The project is divided into several stages, each covering a critical aspect of d
 
 1. **Basic In-Memory Key/Value Store:** Creation of a simple, in-memory key/value store with experimentation on concurrent data reading and writing mechanisms.
 
-2. **Disk-Based Storage Engine for Read-Only Key/Value Data:** Development of a persistent storage engine for random reads of key/value data, addressing challenges associated with disk-based storage. (My biggest focus)
+2. **Disk-Based Storage Engine for Read-Only Key/Value Data:** Development of a persistent storage engine for random reads of key/value data. (Main focus)
 
 I think this was the wrong way to do it. we go next
 
