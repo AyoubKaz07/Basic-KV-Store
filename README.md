@@ -2,7 +2,7 @@ This project aims to get my hands dirtier doing systems in c++
 
 ## Description
 
-The project is divided into several stages, each covering a critical aspect of database development:
+The project is divided into several stages, each covering something in databases:
 
 1. **Basic In-Memory Key/Value Store:** Creation of a simple, in-memory key/value store with experimentation on concurrent data reading and writing mechanisms.
 
